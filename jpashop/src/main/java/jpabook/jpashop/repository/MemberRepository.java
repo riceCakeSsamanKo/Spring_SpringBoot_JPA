@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public class MemberRepository {
 
-    @PersistenceContext
+    @PersistenceContext  // 스프링에서 엔티티 매니저를 주입해줌
     private EntityManager em;
 
     public void save(Member member){
@@ -22,6 +22,7 @@ public class MemberRepository {
     }
 
     public List<Member> findAll(){
+        //createQuery로 DB에 JPQL 주고 Member.class 반환받음
         List<Member> result =
                 em.createQuery("select m from Member m", Member.class).
                 getResultList();
@@ -32,7 +33,7 @@ public class MemberRepository {
     public List<Member> findByName(String name){
         List<Member> result =
                 em.createQuery("select m from Member m where m.name = :name", Member.class).
-                setParameter("name", name).
+                setParameter("name", name).  // :name에 String name 대입함
                 getResultList();
 
         return result;
