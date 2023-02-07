@@ -19,18 +19,18 @@ public class Order {
     @Column(name = "order_id")
     private Long id;
 
-    @ManyToOne  //Order에서 Member는 다대일 관계
+    @ManyToOne(fetch = FetchType.LAZY)  //Order에서 Member는 다대일 관계
     @JoinColumn(name = "member_id")  // 외래 키(fk), 연관관계 주인
     private Member member;
 
-    @OneToMany(mappedBy = "order")  //OrderItem.order에 의해서 매핑됨
-    private List<OrderItem> orderItems = new ArrayList<>();
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)  // persist(order)하면 orderItem들도 모두 저장
+    private List<OrderItem> orderItems = new ArrayList<>(); //OrderItem.order에 의해서 매핑됨
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "delivery_id")  // 외래 키(fk), 연관관계 주인
     private Delivery delivery;
 
-    private LocalDateTime orderDate;  //주문 시간
+    private LocalDateTime orderDate;  //주문 시간 (테이블명:order_date)
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;  //주문 상태 [ORDER,CANCEL]
