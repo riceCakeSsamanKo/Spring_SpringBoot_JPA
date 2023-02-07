@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 @DiscriminatorValue("M")  // 싱글테이블이니 DB 입장에서 구분하기 위하여 설정
 @Getter @Setter
 public class Movie extends Item{
+
     private String director;
     private String actor;
 }
