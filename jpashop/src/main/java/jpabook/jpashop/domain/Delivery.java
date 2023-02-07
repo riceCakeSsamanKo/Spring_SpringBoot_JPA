@@ -17,7 +17,8 @@ public class Delivery {
     private Long id;
 
 
-    @OneToOne(mappedBy = "delivery",fetch = LAZY)  //Order.delivery에 의해서 매핑됨
+    @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)  //Order.delivery에 의해서 매핑됨
+
     private Order order;
 
     @Embedded
