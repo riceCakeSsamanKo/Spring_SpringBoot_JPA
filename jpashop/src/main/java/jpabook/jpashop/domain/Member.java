@@ -8,8 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Getter @Setter
 public class Member {
     @Id @GeneratedValue
     @Column(name = "member_id")
@@ -21,7 +20,7 @@ public class Member {
     private Address address;
 
     @OneToMany(mappedBy = "member")  //Order.member에 의해서 매핑됨
-    private List<Order> order = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
 
 
 }
