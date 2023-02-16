@@ -44,7 +44,7 @@ public class MemberController {
 
     @GetMapping("/members")
     public String list(Model model) {
-        List<Member> members = memberService.findMember();
+        List<Member> members = memberService.findMembers();
         model.addAttribute("members", members); //model에 members를 담아서 화면에 넘김
         return "members/memberList";
     }
