@@ -8,9 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 public class Member {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "member_id")
     private Long id;
 
@@ -21,6 +23,4 @@ public class Member {
 
     @OneToMany(mappedBy = "member")  //Order.member에 의해서 매핑됨
     private List<Order> orders = new ArrayList<>();
-
-
 }
